@@ -1,10 +1,12 @@
 (ns clabango.tags
   (:require [clabango.filters :refer [context-lookup]]))
 
+(def custom-resource-base (atom nil))
+
 (defn load-template [template]
   (-> (Thread/currentThread)
       (.getContextClassLoader)
-      (.getResource template)))
+      (.getResource (str @custom-resource-base template))))
 
 (defn get-block-status [context]
   (::block-info context))

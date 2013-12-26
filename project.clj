@@ -1,4 +1,4 @@
-(defproject clabango "0.6-SNAPSHOT"
+(defproject clabango "0.6-SNAPSHOT-dev"
   :description "A templating language?"
   :url "https://github.com/danlarkin/clabango/"
   :license {:name "3-Clause BSD"

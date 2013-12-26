@@ -2,10 +2,17 @@
   (:require [clojure.set]
             [clabango.filters :refer [context-lookup template-filter]]
             [clabango.tags :refer [get-block-status load-template
-                                   template-tag valid-tags]])
+                                   template-tag valid-tags] :as tags])
   (:import (au.com.bytecode.opencsv CSVReader)
            (java.io StringReader)
            (org.apache.commons.lang3 StringEscapeUtils)))
+
+(defn set-resource-base! [^String base]
+  (let [base (if (or (nil? base)
+                     (.endsWith base "/"))
+               base
+               (str base "/"))]
+    (reset! tags/custom-resource-base base)))
 
 (declare lex* string->ast ast->groups)
 
